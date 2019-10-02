@@ -93,16 +93,16 @@ function flattenRecursive(array) {
 
 function flattenLoop(array) {
     let flatArray = [];
-    let stack = [array];
+    let queue = [array];
 
-    while (stack.length > 0) {
-        for (let arr of stack[0]) {
-            if (Array.isArray(arr))
-                stack.push(arr);
+    while (queue.length > 0) {
+        for (let element of queue[0]) {
+            if (Array.isArray(element))
+                queue.push(element);
             else
-                flatArray.push(arr);
+                flatArray.push(element);
         }
-        stack.shift();
+        queue.shift();
     }
     return flatArray;
 }
